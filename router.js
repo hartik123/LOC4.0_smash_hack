@@ -48,6 +48,8 @@ router.post('/getCart',UserController.getCart)
 
 router.get('/allUsers',UserController.allUsers)
 
+router.get('/removeFromCart',UserController.removeFromCart)
+
 
 
 

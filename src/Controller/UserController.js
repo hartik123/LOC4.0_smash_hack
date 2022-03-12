@@ -38,7 +38,13 @@ if(user)
     user=user[0];
     if(bcryptjs.compareSync(password,user.password))
     {
-        res.send({ans:true,user:user})
+        if(email=="admin@gmail.com"&&password=="admin@123")
+        {
+            res.send({ans:true,user:user,admin:true})
+        }
+        else{
+            res.send({ans:true,user:user,admin:false})
+        }
     }
     else{
         res.send({ans:false})
@@ -50,6 +56,41 @@ else{
 
 
 }
+
+//Remove from cart
+const removeFromCart=async (req,res)=>{
+    let id= req.body.id;
+    let user=await models.UserModel.find({email:req.body.email});
+  
+    
+    if(user.length!=0)
+    {   
+      user=user[0]
+  
+      let index=user.cart.indexOf(id)
+      let arr1=user.cart.slice(0,index)
+      let arr2=user.cart.slice(index+1)
+      let final=arr1.concat(arr2);
+  
+      user.cart=final;
+      user.save(async(err,result)=>{
+        if(err)
+        {
+          res.send({ans:false})
+        }
+        else{
+          let cart=await models.ProductModel.find({_id:{$in:final}})
+          res.send({ans:true,cart:cart})
+        }
+      })
+      
+    }
+    else{
+  
+      res.send({ans:false})
+    }
+  
+  }
 
 const addtoCart=async (req,res)=>{
     let id=req.body.id;
@@ -116,5 +157,6 @@ module.exports.register=register
 module.exports.addtoCart=addtoCart
 module.exports.getCart=getCart
 module.exports.allUsers=allUsers
+module.exports.removeFromCart=removeFromCart
 
 
