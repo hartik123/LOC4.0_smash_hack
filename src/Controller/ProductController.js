@@ -3,11 +3,11 @@ const models=require('../Model.js')
 const addProduct=async (req,res)=>{
 
     let name=req.body.name
-    let quantity=req.body.quantity
+    let quantity=req.body.stock
     let description=req.body.description
     let price=req.body.price
     let image=req.file.path;
-    let product=await models.ProductModel({name:name,stock:quantity, quantity:quantity, description:description, price:price,image:image})
+    let product=await models.ProductModel({name:name,stock:quantity, stock:quantity, description:description, price:price,image:image})
     product.save((err,result)=>{
         if(err){
             res.send({ans:false})
