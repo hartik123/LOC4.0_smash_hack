@@ -8,9 +8,10 @@ const createOrder=async (req,res)=>{
     let contact=req.body.phone;
     let name=req.body.name;
     let id=req.body.id;
+    let address=req.body.address;
     let quantity=req.body.quantity;
     let paymentId=req.body.paymentId;
-    let order=await models.OrderModel({email:email,contact:contact,name:name,productId:id,qauntity:quantity,paymentId:paymentId});
+    let order=await models.OrderModel({email:email,address:address,contact:contact,name:name,productId:id,qauntity:quantity,paymentId:paymentId});
     order.save((err,result)=>{
         if(err){
             res.send({ans:false})
