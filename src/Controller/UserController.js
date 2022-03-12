@@ -59,7 +59,7 @@ else{
 
 //Remove from cart
 const removeFromCart=async (req,res)=>{
-    let id= req.body.id;
+    let product= req.body.product;
     let user=await models.UserModel.find({email:req.body.email});
   
     
@@ -67,7 +67,7 @@ const removeFromCart=async (req,res)=>{
     {   
       user=user[0]
   
-      let index=user.cart.indexOf(id)
+      let index=user.cart.indexOf(product)
       let arr1=user.cart.slice(0,index)
       let arr2=user.cart.slice(index+1)
       let final=arr1.concat(arr2);
