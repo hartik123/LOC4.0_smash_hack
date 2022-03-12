@@ -10,12 +10,12 @@ const UserSchema=mongoose.Schema({
 
 const OrderSchema=mongoose.Schema({
     date:{type:Date ,default:Date.now()},
-    description:String,
-    cost:Number,
     status:{type:String,default:"Pending"},
     contact:String,
     email:String,
     paymentId:String,
+    name:String,
+    productId:String
 
 })
 

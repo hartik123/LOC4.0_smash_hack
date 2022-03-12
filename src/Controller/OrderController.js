@@ -3,12 +3,13 @@ const Razorpay=require('razorpay')
 
 
 const createOrder=async (req,res)=>{
-    let description=req.body.description
-    let cost=req.body.cost
     let email=req.body.email;
     let contact=req.body.contact;
-    let transport=req.body.transport;
-    let order=await models.OrderModel({cost:cost,description:description,email:email,contact:contact,transport:transport})
+    let name=req.body.name;
+    let id=req.body.id;
+    let quantity=re.body.quantity;
+    let paymentId=req.body.paymentId;
+    let order=await models.OrderModel({email:email,contact:contact,name:name,productIdid:id,qauntity:quantity,paymentId:paymentId});
     order.save((err,result)=>{
         if(err){
             res.send({ans:false})
@@ -32,6 +33,7 @@ let options={
 //Key_secret
 //o58moAgKrOw9VhzPgSWSYngu
 const razor=new Razorpay(options);
+
 
 const generateOrderId=(req,res)=>{
     
@@ -64,6 +66,9 @@ const allOrders=async (req,res)=>{
     let orders=await models.OrderModel.find({});
     res.send({orders:orders})
 }
+
+
+
 
 module.exports.createOrder=createOrder
 module.exports.allOrders=allOrders
