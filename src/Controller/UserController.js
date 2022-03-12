@@ -58,11 +58,13 @@ const addtoCart=async (req,res)=>{
     
     try{
         let user=await models.UserModel.find({email:email})
-        let product=await models.UserModel.find({_id:id})
+        let product=await models.ProductModel.find({_id:id})
+        
         if(user&&product)
         {
             user=user[0]
             product=product[0]
+
             let cartObject={productId:id,quantity:quantity,name:product.name,description:product.description,price:product.price}
             user.cart=[...user.cart,cartObject]
             user.save((err,result)=>{
@@ -79,7 +81,7 @@ const addtoCart=async (req,res)=>{
         }
     }
     catch(err)
-    {
+    {   console.log(err)
         res.send({ans:false})
     }
 }
