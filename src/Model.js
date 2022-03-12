@@ -16,7 +16,7 @@ const OrderSchema=mongoose.Schema({
     paymentId:String,
     name:String,
     productId:String,
-    quantity:String,
+    quantity:Number,
     address:String
 
 })
