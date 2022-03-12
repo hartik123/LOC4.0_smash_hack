@@ -1,11 +1,11 @@
 import React from 'react'
 import Navbar1 from './Navbar1';
-import './Dashboard.css';
+import './Home.css';
 
-const Dashboard = () => {
+const Home = () => {
     return (
         <div>
-            <div className="dashboardtxt">
+            <div className="hometxt">
 
                 2. The SCM 4.0
                 PROBLEM STATEMENTS
@@ -41,4 +41,4 @@ const Dashboard = () => {
     )
 }
 
-export default Dashboard
+export default Home

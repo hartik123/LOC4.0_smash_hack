@@ -5,8 +5,8 @@ import Login from './components/Login/Login'
 import Register from './components/Register/Register'
 import ManageOrders from './components/ManageOrders/ManageOrders'
 import TrackGoods from './components/TrackGoods/TrackGoods'
-import Dashboard from './components/Dashboard/Dashboard'
-import Navbar1 from './components/Dashboard/Navbar1.js';
+import Home from './components/Home/Home'
+import Navbar1 from './components/Home/Navbar1.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -14,14 +14,14 @@ function App() {
 
   return (
     <div className="App">
-      
+
       <Navbar1 />
 
       <Router>
         <Switch>
 
           <Route path='/' exact>
-            <Dashboard />
+            <Home />
           </Route>
           <Route path='/login'>
             <Login setLoginUser={setLoginUser} />
