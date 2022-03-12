@@ -152,11 +152,19 @@ const getCart=async (req,res)=>{
 
 }
 
+const myOrders=async(req,res)=>{
+    let email=req.body.email;
+    let orders=await models.OrderModel.find({email:email});
+    res.send({orders:orders})
+}
+
+
 module.exports.login=login
 module.exports.register=register
 module.exports.addtoCart=addtoCart
 module.exports.getCart=getCart
 module.exports.allUsers=allUsers
 module.exports.removeFromCart=removeFromCart
+module.exports.myOrders=myOrders
 
 
