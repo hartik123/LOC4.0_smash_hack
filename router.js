@@ -36,6 +36,8 @@ router.post('/addProduct',uploader.single('image'),ProductController.addProduct)
 
 router.post('/stockRemove',ProductController.stockRemove)
 
+router.post('/createOrder',OrderController.createOrder)
+
 router.post('/generateOrderId',OrderController.generateOrderId)
 
 router.post('/updateOrderStatus',OrderController.updateOrderStatus)
@@ -44,7 +46,7 @@ router.post('/addtoCart',UserController.addtoCart)
 
 router.post('/getCart',UserController.getCart)
 
-
+router.get('/allUsers',UserController.allUsers)
 
 
 

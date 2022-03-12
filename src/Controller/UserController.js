@@ -86,6 +86,10 @@ const addtoCart=async (req,res)=>{
     }
 }
 
+const allUsers=async (req,res)=>{
+    let users=models.UserModel.find({});
+    res.send({ans:true,users:users})
+}
 
 
 const getCart=async (req,res)=>{
@@ -111,4 +115,6 @@ module.exports.login=login
 module.exports.register=register
 module.exports.addtoCart=addtoCart
 module.exports.getCart=getCart
+module.exports.allUsers=allUsers
+
 
