@@ -122,8 +122,47 @@ const updateOrderStatus=async (req,res)=>{
 }
 
 
+const returnedOrder=async (req,res)=>{
+
+    let orders=await models.OrderModel.find({status:'returned'})
+    res.send({orders:orders})
+
+}
+
+const removeOrder=async (req,res)=>{
+    let id=req.body.id;
+    try{
+    let order=await models.OrderModel.find({_id:id})
+    order=order[0];
+    if(order.staus=='returned')
+    {  
+        await models.OrderModel.remove({_id:id},(err,result)=>{
+            if(err) {
+                res.send({ans:false})
+            }
+            else{
+                res.send({ans:true})
+            }
+        })
+
+    }
+    else{
+        res.send({ans:false})
+    }
+
+    }
+    catch(err)
+    {  
+        res.send({ans:false})
+    }
+
+}
+
+
 
 module.exports.createOrder=createOrder
 module.exports.allOrders=allOrders
 module.exports.generateOrderId=generateOrderId
 module.exports.updateOrderStatus=updateOrderStatus
+module.exports.removeOrder=removeOrder
+module.exports.returnedOrder=returnedOrder

@@ -48,7 +48,13 @@ router.post('/getCart',UserController.getCart)
 
 router.get('/allUsers',UserController.allUsers)
 
-router.get('/removeFromCart',UserController.removeFromCart)
+router.post('/removeFromCart',UserController.removeFromCart)
+
+router.post('/removeOrder',OrderController.removeOrder)
+
+router.get('/returnedOrder',OrderController.returnedOrder)
+
+router.post('/myOrders',UserController.myOrders)
 
 
 
