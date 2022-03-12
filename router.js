@@ -34,7 +34,7 @@ router.post('/addStock',ProductController.addStock)
 
 router.post('/addProduct',uploader.single('image'),ProductController.addProduct)
 
-router.post('stockRemove',ProductController.stockRemove)
+router.post('/stockRemove',ProductController.stockRemove)
 
 router.post('/geneerateOrderId',OrderController.generateOrderId)
 
