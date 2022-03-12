@@ -65,7 +65,7 @@ const addtoCart=async (req,res)=>{
             user=user[0]
             product=product[0]
 
-            let cartObject={productId:id,quantity:quantity,name:product.name,description:product.description,price:product.price}
+            let cartObject={productId:id,image:product.image,quantity:quantity,name:product.name,description:product.description,price:product.price}
             user.cart=[...user.cart,cartObject]
             user.save((err,result)=>{
                 if(err){
