@@ -17,6 +17,6 @@ class SupplyReqView(generics.GenericAPIView):
         serializer = SupplyReqSerializer(data=request.data)
         if serializer.is_valid():
             #data = json.loads(json_util.dumps(list(mongoClient.scm.products.find({'_id': ObjectId(serializer.validated_data['product_id'])}))))
-            data = model.predict([[50,100]]).to_dict('records')
+            data = model.predict([[50,100]])
             return Response(data,status=HTTP_200_OK)
         return Response(status=HTTP_400_BAD_REQUEST)
