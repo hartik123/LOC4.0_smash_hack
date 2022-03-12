@@ -5,10 +5,10 @@ const nodemailer=require("nodemailer")
 
 const createOrder=async (req,res)=>{
     let email=req.body.email;
-    let contact=req.body.contact;
+    let contact=req.body.phone;
     let name=req.body.name;
     let id=req.body.id;
-    let quantity=re.body.quantity;
+    let quantity=req.body.quantity;
     let paymentId=req.body.paymentId;
     let order=await models.OrderModel({email:email,contact:contact,name:name,productId:id,qauntity:quantity,paymentId:paymentId});
     order.save((err,result)=>{

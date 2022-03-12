@@ -18,6 +18,36 @@ const addProduct=async (req,res)=>{
     })
 }
 
+const stockRemove=async(req,res) => {
+    let id=req.body.id;
+    let quantity=req.body.quantity;
+    let product = await models.ProductModel.find({ _id: id });
+    product=product[0]
+    
+    if(quantity>product.stock)
+    {  
+      res.send({ans:false})
+    }
+    else{
+      // product.stock=product.stock-Number(quantity);
+      let preStock=product.stock;
+    
+      product.stock=preStock-quantity
+      await product.save((err,result)=>{
+        if(err)
+        {
+          res.send({ans:false})
+        }
+        else{
+          res.send({ans:true})
+        }
+      })
+    }
+    }
+    
+
+
+
 const allProducts=async (req,res)=>{
     let products=await models.ProductModel.find({});
 
@@ -63,3 +93,4 @@ catch(err)
 module.exports.addProduct=addProduct
 module.exports.allProducts=allProducts
 module.exports.addStock=addStock
+module.exports.stockRemove=stockRemove
