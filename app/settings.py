@@ -128,4 +128,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 from pymongo import MongoClient
 
-mongoClient = MongoClient('mongodb+srv://mongo:mongo@cluster0.9nefj.mongodb.net/scm?retryWrites=true&w=majority')
+#mongoClient = MongoClient('mongodb+srv://mongo:mongo@cluster0.9nefj.mongodb.net/scm?retryWrites=true&w=majority')
