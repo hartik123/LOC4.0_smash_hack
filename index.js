@@ -1,7 +1,10 @@
 const express =require("express")
 const app=express();
 const router=require('./router.js')
+const cors=require('cors')
 app.use(express.json())
+app.use(cors({origin:"http://localhost:3000"}))
+
 app.use('/',router)
 
 

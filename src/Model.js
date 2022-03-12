@@ -4,7 +4,8 @@ mongoose.connect(uri,{ useNewUrlParser: true, useUnifiedTopology: true })
 const UserSchema=mongoose.Schema({
     name:String,
     email:{type:String,unique:true},
-    password:String
+    password:String,
+    cart:[{productId:{type:mongoose.Schema.Types.ObjectId},quantity:Number}]
 })
 
 const OrderSchema=mongoose.Schema({

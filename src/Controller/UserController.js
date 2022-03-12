@@ -6,11 +6,11 @@ const register=async (req,res)=>{
     let name=req.body.name;
     let email=req.body.email;
     let password=req.body.password;
-
+    let cart=[];
     if(name!=""&& email!=""&& password!="")
     {
     let hashpass=bcryptjs.hashSync(password);
-    let user=await models.UserModel({name:name,email:email,password:hashpass})
+    let user=await models.UserModel({name:name,email:email,password:hashpass,cart:cart})
     user.save((err,result)=>{
         if(err){
             res.send({ans:false})
@@ -38,7 +38,7 @@ if(user)
     user=user[0];
     if(bcryptjs.compareSync(password,user.password))
     {
-        res.send({ans:true})
+        res.send({ans:true,user:user})
     }
     else{
         res.send({ans:false})

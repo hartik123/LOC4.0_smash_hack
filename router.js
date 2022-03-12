@@ -18,7 +18,9 @@ router.post('/addOrder',OrderController.createOrder);
 
 router.post('/addRawMaterial',RawMaterialController.addStock)
 
-router.get('/allMaterials',RawMaterialController.allRawMaterial)
+router.get('/allRawMaterials',RawMaterialController.allRawMaterial)
+
+
 
 
 
