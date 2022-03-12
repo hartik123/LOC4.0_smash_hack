@@ -5,7 +5,7 @@ const UserSchema=mongoose.Schema({
     name:String,
     email:{type:String,unique:true},
     password:String,
-    cart:[{productId:{type:mongoose.Schema.Types.ObjectId},quantity:Number}]
+    cart:[{productId:{type:mongoose.Schema.Types.ObjectId},quantity:Number,description:String,price:Number,name:String}]
 })
 
 const OrderSchema=mongoose.Schema({

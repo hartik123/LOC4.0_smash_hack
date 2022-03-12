@@ -55,12 +55,15 @@ const addtoCart=async (req,res)=>{
     let id=req.body.id;
     let email=req.body.email;
     let quantity=req.body.quantity;
-    let cartObject={productId:id,quantity:quantity}
+    
     try{
         let user=await models.UserModel.find({email:email})
-        if(user)
+        let product=await models.UserModel.find({_id:id})
+        if(user&&product)
         {
             user=user[0]
+            product=product[0]
+            let cartObject={productId:id,quantity:quantity,name:product.name,description:product.description,price:product.price}
             user.cart=[...user.cart,cartObject]
             user.save((err,result)=>{
                 if(err){

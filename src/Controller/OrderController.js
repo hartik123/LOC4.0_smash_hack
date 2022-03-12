@@ -1,5 +1,6 @@
 const models=require('../Model.js')
 const Razorpay=require('razorpay')
+const nodemailer=require("nodemailer")
 
 
 const createOrder=async (req,res)=>{
@@ -69,7 +70,59 @@ const allOrders=async (req,res)=>{
 
 
 
+const updateOrderStatus=async (req,res)=>{
+    let id=req.body.id;
+    let updatedStatus=req.body.status;
+    try{
+        let order=await models.OrderModel.find({_id:id})
+        order.status=updatedStatus;
+        order.save((err,order)=>{
+            if(err)
+            {   console.log("first")
+                res.send({ans:false})
+            }
+            else{
+                if(updatedStatus.toLowerCase()=='delivered')
+                {
+                    var transporter = nodemailer.createTransport({
+                        service: 'gmail',
+                        auth: {
+                          user: 'pithadiyahardik003@gmail.com',
+                          pass: 'Hardik123'
+                        }
+                      });
+                      
+                      var mailOptions = {
+                        from: 'pithadiyahardik003@gmail.com',
+                        to: 'pithadiyahardik003@gmail.com',
+                        subject: 'Related the delivery of product from SCM',
+                        text: 'Thank you for using our product.Please keep supporting '
+                      };
+                      
+                      transporter.sendMail(mailOptions, function(error, info){
+                        if (error) {
+                          console.log(error);
+                        } else {
+                          console.log('Email sent: ' + info.response);
+                        }})
+                }
+                
+                    
+
+                res.send({ans:true})
+            }
+        })
+    }
+    catch(err)
+    {   console.log("first")
+        res.send({ans:false})
+    }
+
+}
+
+
 
 module.exports.createOrder=createOrder
 module.exports.allOrders=allOrders
 module.exports.generateOrderId=generateOrderId
+module.exports.updateOrderStatus=updateOrderStatus
