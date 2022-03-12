@@ -128,10 +128,6 @@ STATIC_ROOT = BASE_DIR / 'static'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-from pymongo import MongoClient
-
-#mongoClient = MongoClient('mongodb+srv://mongo:mongo@cluster0.9nefj.mongodb.net/scm?retryWrites=true&w=majority')
-
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
 ]
