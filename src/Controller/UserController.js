@@ -45,7 +45,7 @@ if(user)
     }
 }
 else{
-    res.send({ans:false,m:"USer does not exist"})
+    res.send({ans:false,m:"User does not exist"})
 }
 
 
