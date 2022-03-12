@@ -15,10 +15,18 @@ const OrderSchema=mongoose.Schema({
     status:{type:String,default:"Pending"},
     contact:String,
     email:String,
-    transport:String
+    paymentId:String,
 
 })
 
+const ProductSchema=mongoose.Schema({
+    name:String,
+    stock:{type:Number,min:0},
+    price:{type:Number,min:0},
+    description:String,
+    warrenty:String,
+    image:String
+})
 
 const RawMaterialSchema = mongoose.Schema({
     name:{type:String},
@@ -29,6 +37,11 @@ const RawMaterialSchema = mongoose.Schema({
 const UserModel=mongoose.model("User",UserSchema)
 const OrderModel=mongoose.model("Order",OrderSchema)
 const RawMaterialModel=mongoose.model("RawMaterial",RawMaterialSchema)
+const ProductModel=mongoose.model("Product",ProductSchema)
 
 
 module.exports.UserModel=UserModel;
+module.exports.OrderModel=OrderModel;
+module.exports.RawMaterialModel=RawMaterialModel;
+module.exports.ProductModel=ProductModel;
+
