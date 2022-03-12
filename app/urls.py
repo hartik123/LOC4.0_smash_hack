@@ -19,5 +19,5 @@ from logics import views
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
-    path('', views.Schedule.as_view())
+    path('product/', views.SupplyReqView.as_view())
 ]
