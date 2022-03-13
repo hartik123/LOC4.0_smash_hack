@@ -68,19 +68,34 @@ const removeFromCart=async (req,res)=>{
       user=user[0]
   
       let index=user.cart.indexOf(product)
-      let arr1=user.cart.slice(0,index)
-      let arr2=user.cart.slice(index+1)
-      let final=arr1.concat(arr2);
-  
-      user.cart=final;
+      
+      index=-1;
+        console.log(product)
+        for(let i=0;i<user.cart.length;i++)
+        {
+            if(product._id==user.cart[i]._id)
+            {
+                index=i;
+            }
+        }
+        if(index!=-1)
+        {
+          let arr1=user.cart.slice(0,index)
+          let arr2=user.cart.slice(index+1)
+          let final=arr1.concat(arr2);
+          user.cart=final;
+        }
+
+      
+      
+      
       user.save(async(err,result)=>{
         if(err)
         {
           res.send({ans:false})
         }
         else{
-          let cart=await models.ProductModel.find({_id:{$in:final}})
-          res.send({ans:true,cart:cart})
+          res.send({ans:true})
         }
       })
       
