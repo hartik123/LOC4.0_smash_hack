@@ -1,10 +1,31 @@
 import React from 'react'
 import Navbar1 from './Navbar1';
 import './Home.css';
+import {Carousel} from 'react-bootstrap'
+import i1 from './carouselimages/offer1.jpg'
+import i2 from './carouselimages/offer2.jpg'
+import i3 from './carouselimages/offer3.jpg'
 
 const Home = () => {
     return (
-        <div>
+        <div style={{marginTop:"6rem"}}>
+           
+
+            <div style={{ padding: '10px' }}>
+                <Carousel variant='dark' style={{ width: '100%' }}>
+                    <Carousel.Item interval={2000}>
+                        <img src={i1} style={{ height: '70vh', width: '100%' }} />
+                    </Carousel.Item>
+                    <Carousel.Item interval={2000}>
+                        <img src={i2} style={{ height: '70vh', width: '100%' }} />
+                    </Carousel.Item>
+                    <Carousel.Item interval={2000}>
+                        <img src={i3} style={{ height: '70vh', width: '100%' }} />
+                    </Carousel.Item>
+                </Carousel>
+
+            </div>
+
             <div className="hometxt">
 
                 2. The SCM 4.0

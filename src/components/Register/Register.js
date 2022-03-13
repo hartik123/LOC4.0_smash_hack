@@ -52,9 +52,9 @@ const Register = () => {
     const register = () => {
         const { name, email, password, reEnterPassword } = user
         if (name && email && password && password === reEnterPassword) {
-            axios.post('http://localhost:9002/register', user)
+            axios.post('http://localhost:8080/register', user)
                 .then(res => {
-                    alert(res.data.message)
+                    alert(res.data.ans)
                     history.push('/login')
                 })
         }
@@ -66,10 +66,9 @@ const Register = () => {
     }
 
     return (
-        <div>
+        <div style={{marginTop:"6rem"}}>
 
             <center>
-                <h1>SCM 4.0</h1>
                 <h2>Register</h2>
 
                 <form className={classes.root}>
@@ -82,9 +81,17 @@ const Register = () => {
                     <TextField color="primary" required id="filled-basic" type="password" name="reEnterPassword" value={user.reEnterPassword} label="Re-Enter password" variant="filled" onChange={handleChange} />
                 </form>
                 <br />
-                <Button variant="contained" color='primary' className={classes.button} onClick={register} startIcon={<SaveIcon />}>Register</Button>
-                <div>or</div>
-                <Button variant="contained" color="secondary" className={classes.button} onClick={() => history.push('/login')} startIcon={<NearMeSharp />}>Login</Button>
+                <div style={{display: "flex", justifyContent:"center"}}>
+                <Button variant="contained" color="secondary" className="button" onClick={() => {
+                    register();
+                    history.push('/register')}
+                 }
+                  startIcon={<SaveIcon />} style={{margin: "1rem", flex:"wrap"}}>Register</Button>
+                
+                <Button variant="contained" color="primary" className="button" onClick={()=>history.push('/login')} startIcon={<NearMeSharp />} style={{margin: "1rem", flex:"wrap"}}>Login</Button>
+                
+                
+                </div>
             </center>
         </div>
     )

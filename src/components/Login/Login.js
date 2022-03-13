@@ -50,10 +50,10 @@ const classes = useStyles()
         const { email, password } = user;
 
         if (email && password) {
-            axios.post("http://localhost:9002/login", user)
+            axios.post("http://localhost:8080/login", user)
                 .then(res => {
-                    alert(res.data.message)
-                    setLoginUser(res.data.user)
+                    console.log(res.data.user)
+                    window.localStorage.setItem('email', res.data.user.email)
                     history.push('/')
                 }
                 )
@@ -61,9 +61,8 @@ const classes = useStyles()
     }
 
     return (
-        <div>
+        <div style={{marginTop:"6rem"}}>
             <center>
-                <h1>SCM 4.0</h1>
                 <h2>Login</h2>
                 <form className={classes.root}>
                 <TextField color="primary" required id="filled-basic" type="text" name="email" value={user.email} label='Enter Email id' onChange={handleChange} variant="filled"/>
@@ -72,9 +71,11 @@ const classes = useStyles()
                 </form>
                 <br />
                 <br />
-                <Button variant="contained" color="primary" className="button" onClick={login} startIcon={<NearMeSharp />}>Login</Button>
-                <div>or</div>
-                <Button variant="contained" color="secondary" className="button" onClick={() => history.push('/register')} startIcon={<SaveIcon />}>Register</Button>
+                <div style={{display: "flex", justifyContent:"center"}}>
+                <Button variant="contained" color="primary" className="button" onClick={login} startIcon={<NearMeSharp />} style={{margin: "1rem", flex:"wrap"}}>Login</Button>
+                
+                <Button variant="contained" color="secondary" className="button" onClick={() => history.push('/register')} startIcon={<SaveIcon />} style={{margin: "1rem", flex:"wrap"}}>Register</Button>
+                </div>
             </center>
         </div>
     )
