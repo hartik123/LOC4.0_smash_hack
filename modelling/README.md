@@ -1,37 +1,12 @@
-# SCM 4.0 MERN
-Full-Stack SCM 4.0 with Admin Dashboard & RazorPay Payment Gateway.
+# Building ML model for predicting supplies.
+> A linear regression model to that predicts supplies required based on available stocks and demand of the item for previous 7 days.
 
-## 🖥️ Tech Stack
-*Frontend:*
+## Requirements  (Prerequisites)
+Tools and packages required to successfully install this project.
 
-![reactjs](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)&nbsp;
-![react-router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)&nbsp;
-![mui](https://img.shields.io/badge/Material--UI-0081CB?style=for-the-badge&logo=material-ui&logoColor=white)&nbsp;
+* Python 3.9 and up [Download](https://www.python.org/downloads/)
+* IPython kernel [Install](https://ipython.readthedocs.io/en/stable/install/kernel_install.html)
+* Scikit-Learn [Install](https://scikit-learn.org/stable/install.html)
 
-*Backend:*
-
-![nodejs](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)&nbsp;
-![expressjs](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)&nbsp;
-![mongodb](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)&nbsp;
-![jwt](	https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white)&nbsp;
-
-*Payment Gateway:*
-
-![razorpay]
-
-## 🚀 Features
-- Login/Signup User Account
-- Update Profile/Password User Account
-- Cart Add/Remove Items | Update Quantities
-- Save For Later Add/Remove Items
-- Wishlist Add/Remove Items
-- Product Filters Based on Category/Ratings | Price Range
-- Shipping Info in Session Storage
-- My Orders (With All Filters)
-- Order Details of All Ordered Item
-- Users will receive mail when order placed with all details
-- Admin: Dashboard access to only admin roles
-- Admin: Update Order Status | Delete Order
-- Admin: Add/Update Products
-- Admin: Update User Data | Delete User
-- Stock Management: Decrease stock of product when shipped
+## Usage
+The 'main.ipynb' file contains the code for creation of dataset using a predefined formula and building a linear regression model.
